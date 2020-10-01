@@ -4,7 +4,16 @@ Rewards program to customers, awarding points based on each recorded purchase.
 
   ###### Screenshot 1: *Landing Page*
 <kbd><img width="1278" alt="Screen Shot 2020-10-01 at 7 11 24 PM" src="https://user-images.githubusercontent.com/45321668/94872227-10a76a00-041a-11eb-88a1-73edb23ef137.png">
+<br>
 
+###### Screenshot 2: *Customers Table*
+<kbd><img width="1278" alt="Screen Shot 2020-10-01 at 7 11 31 PM" src="https://user-images.githubusercontent.com/45321668/94872348-667c1200-041a-11eb-9235-391166843e62.png">
+
+<br>
+
+###### Screenshot 3: *Customer Detail*
+<kbd>![Screen Shot 2020-09-24 at 10 59 28 AM](https://user-images.githubusercontent.com/45321668/94872383-7e539600-041a-11eb-9484-ad83db295203.png)
+<br>
 
 
 ## To View PointsCalc
