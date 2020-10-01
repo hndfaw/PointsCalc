@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Customer.css";
 import localData from "../Utilities/data";
-import { Table, Form, Button } from "react-bootstrap";
+import { Table, Form, Button, Alert } from "react-bootstrap";
 import { formatCurrency, formatDate } from "../Utilities/formatData";
 
 class Customer extends Component {
@@ -11,6 +11,7 @@ class Customer extends Component {
     transWithPoints: [],
     transWithPointsPerMonth: [],
     totalPoints: 0,
+    showTransactionsNote: false,
   };
 
   componentDidMount() {
@@ -35,6 +36,12 @@ class Customer extends Component {
         let trnsYear = newDate.getFullYear();
         return trns.customerId === customer.id && year === trnsYear;
       });
+
+      if (customersTransactions.length === 0) {
+        this.setState({ showTransactionsNote: true });
+      } else {
+        this.setState({ showTransactionsNote: false });
+      }
       this.calculatePoints(customersTransactions);
       this.setState({ customerId: customer.id, customerName: customer.name });
     }
@@ -130,7 +137,7 @@ class Customer extends Component {
   };
 
   render() {
-    const { customerName, totalPoints } = this.state;
+    const { customerName, totalPoints, showTransactionsNote } = this.state;
 
     return (
       <div className="customer">
@@ -154,6 +161,11 @@ class Customer extends Component {
         </header>
         <div className="customer-table-title-container">
           <h4 className="customer-table-title">Monthly Points</h4>
+          {showTransactionsNote && (
+          <Alert variant="danger" >
+            No transactions found for the selected year.{" "}
+          </Alert>
+        )}
           <Form>
             <Form.Group controlId="exampleForm.SelectCustomSizeSm">
               <Form.Label>Year</Form.Label>
@@ -193,6 +205,7 @@ class Customer extends Component {
           </thead>
           <tbody>{this.returnTransWithPoints()}</tbody>
         </Table>
+        
       </div>
     );
   }
