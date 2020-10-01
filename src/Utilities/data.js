@@ -47,7 +47,7 @@ const localData = {
             customerId: "cstmr-3",
             customerName: "Devante Hogg",
             date: "07-12-2020",
-            usd: 73
+            usd: 105
         },
         {
             id: "trsc-14",
@@ -78,6 +78,13 @@ const localData = {
             usd: 50
         },
         {
+            id: "trsc-29",
+            customerId: "cstmr-4",
+            customerName: "Gertrude Leon",
+            date: "07-03-2019",
+            usd: 346
+        },
+        {
             id: "trsc-12",
             customerId: "cstmr-4",
             customerName: "Gertrude Leon",
@@ -89,7 +96,7 @@ const localData = {
             customerId: "cstmr-4",
             customerName: "Gertrude Leon",
             date: "08-11-2020",
-            usd: 140
+            usd: 80
         },
         {
             id: "trsc-15",

@@ -18,7 +18,7 @@ class App extends Component {
                   <h2 className="logo">
                     Points<span className="logo-span-calc">Calc</span>
                   </h2>
-                  <p className="logo-second-part">REWARDING PROGRAM</p>
+                  <p className="logo-second-part">REWARDS PROGRAM</p>
                 </div>
                 <nav className="app-buttons-container">
                   <ul className="app-nav-list">
@@ -47,18 +47,23 @@ class App extends Component {
               </section>
             </div>
           </Route>
-          <Route exact path="/customers">
-            <Customers />
-          </Route>
-          <Route exact path="/customer/:id"
-          render={props => {
-            const { id } = props.match.params;
-              return <Customer id={id}/>
-          }}
+          <Route
+            exact
+            path="/customers"
+            render={(props) => <Customers {...props} />}
           />
-          <Route exact path="/transactions">
-            <Transactions />
-          </Route>
+          <Route
+            exact
+            path="/customer/:id"
+            render={(props) => {
+              const { id } = props.match.params;
+              return <Customer id={id}  {...props}/>;
+            }}
+          />
+          <Route exact path="/transactions"
+          render={(props) => <Transactions  {...props}/>
+          }
+          />
         </Switch>
       </Router>
     );

@@ -2,3 +2,24 @@
     width: 80vw;
     margin: 20px auto 0 auto;
 }
+
+.customer-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.customer-table-title {
+    margin-top: 40px;
+}
+
+.customer-table-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 40px;
+}
+
+.customer-header-part-1 {
+    display: flex;
+    align-items: center;
+}

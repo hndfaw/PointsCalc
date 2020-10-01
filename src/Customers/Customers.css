@@ -14,12 +14,6 @@
     align-items: center;
 }
 
-.app-link-back-to-home-link {
-    color: #7c7c7c;
-    font-size: 12px;
-    margin-right: 10px;
-}
-
 .customers-header_block_widget {
     border: 1px solid rgb(221, 221, 221);
     border-radius: 3px;
