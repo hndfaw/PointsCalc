@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Customers from "../Customers/Customers";
+import Customer from "../Customer/Customer";
 import Transactions from "../Transactions/Transactions";
 import React, { Component } from "react";
 import localData from "../Utilities/data";
@@ -49,6 +50,12 @@ class App extends Component {
           <Route exact path="/customers">
             <Customers />
           </Route>
+          <Route exact path="/customer/:id"
+          render={props => {
+            const { id } = props.match.params;
+              return <Customer id={id}/>
+          }}
+          />
           <Route exact path="/transactions">
             <Transactions />
           </Route>
