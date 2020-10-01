@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Transactions.css";
-import Table from "react-bootstrap/Table";
+import { Table, Alert, Button } from "react-bootstrap";
 import localData from "../Utilities/data";
 import { Link } from "react-router-dom";
 import { formatCurrency, formatDate } from "../Utilities/formatData";
@@ -26,14 +26,15 @@ class Transactions extends Component {
   returnTransactions = () => {
     const { transactions } = localData;
     return transactions.map((transaction, i) => {
-      const { id, date, usd, customerName, customerId} = transaction;
+      const { id, date, usd, customerName, customerId } = transaction;
       return (
         <tr key={id}>
           <td>{i + 1}</td>
           <td>{formatDate(date)}</td>
           <td>{formatCurrency(usd)}</td>
-          <td><Link to={`/customer/${customerId}`}>{customerName}</Link></td>
-
+          <td>
+            <Link to={`/customer/${customerId}`}>{customerName}</Link>
+          </td>
         </tr>
       );
     });
@@ -47,19 +48,31 @@ class Transactions extends Component {
       <div className="transactions">
         <header className="transactions-header">
           <div className="transactions-header_block">
-            <Link className="app-link-back-to-home-link" to="/">
-              <span>&#8592;</span> Back to Home
-            </Link>
-            <h3>Transactions</h3>
+            <Button
+              size="sm"
+              onClick={this.props.history.goBack}
+              variant="light"
+            >
+              <span>&#8592;</span> Back
+            </Button>
+            <h3 className="component-title">Transactions</h3>
           </div>
           <div className="transactions-header_block">
             <div className="transactions-header_block_widget">
-              <p className="transactions-header_block_number">{transactions.length}</p>
-              <p className="transactions-header_block_widget-label">Total Transactions</p>
+              <p className="transactions-header_block_number">
+                {transactions.length}
+              </p>
+              <p className="transactions-header_block_widget-label">
+                Total Transactions
+              </p>
             </div>
             <div className="transactions-header_block_widget">
-              <p className="transactions-header_block_number">{formatCurrency(totalUSD)}</p>
-              <p className="transactions-header_block_widget-label">Total USD</p>
+              <p className="transactions-header_block_number">
+                {formatCurrency(totalUSD)}
+              </p>
+              <p className="transactions-header_block_widget-label">
+                Total USD
+              </p>
             </div>
           </div>
         </header>
@@ -74,6 +87,7 @@ class Transactions extends Component {
           </thead>
           <tbody>{this.returnTransactions()}</tbody>
         </Table>
+        <Alert variant="light">Click on a customer's name for details.</Alert>
       </div>
     );
   }

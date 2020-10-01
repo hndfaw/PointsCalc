@@ -81,3 +81,7 @@
   border-radius: 0.2rem;
   color: #fff;
 }
+
+.component-title {
+  margin-left: 15px;
+}
