@@ -26,13 +26,14 @@ class Transactions extends Component {
   returnTransactions = () => {
     const { transactions } = localData;
     return transactions.map((transaction, i) => {
-      const { id, date, usd, customerName} = transaction;
+      const { id, date, usd, customerName, customerId} = transaction;
       return (
         <tr key={id}>
           <td>{i + 1}</td>
           <td>{formatDate(date)}</td>
           <td>{formatCurrency(usd)}</td>
-          <td>{customerName}</td>
+          <td><Link to={`/customer/${customerId}`}>{customerName}</Link></td>
+
         </tr>
       );
     });

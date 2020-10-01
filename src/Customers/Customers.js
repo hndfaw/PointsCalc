@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import "./Customers.css";
 import Table from "react-bootstrap/Table";
 import localData from "../Utilities/data";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Customer from "../Customer/Customer";
+import { Link } from "react-router-dom";
 
 class Customers extends Component {
     
@@ -15,7 +14,7 @@ class Customers extends Component {
           return (
             <tr key={id}>
               <td>{i + 1}</td>
-              <td>{name}</td>
+              <td><Link to={`/customer/${id}`}>{name}</Link></td>
             </tr>
           );
         });
@@ -25,9 +24,6 @@ class Customers extends Component {
         const { customers } = localData;
     
         return (
-            <Router>
-        <Switch>
-        <Route exact path="/customers">
 
           <div className="customers">
             <header className="customers-header">
@@ -54,15 +50,7 @@ class Customers extends Component {
               <tbody>{this.returnTransactions()}</tbody>
             </Table>
           </div>
-          </Route>
-          <Route exact path="/customer/:id">
-              <Customer />
-          </Route>
-
-          </Switch>
-
-          </Router>
-
+   
         );
       }
 }
