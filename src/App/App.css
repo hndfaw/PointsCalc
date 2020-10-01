@@ -74,7 +74,6 @@
 }
 
 
-
 .app-link {
   padding: 0.4rem 0.5rem;
   font-size: 0.875rem;
@@ -92,7 +91,7 @@
   text-decoration: none;
   color: #fff;
   background-color: #0069d9;
-    border-color: #0062cc;
+  border-color: #0062cc;
 }
 
 .app-link-red {

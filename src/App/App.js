@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import Button from "react-bootstrap/Button";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Customers from "../Customers/Customers";
-import Transactions from "../Transactions/Transactions";
+
+import React, { Component } from "react";
 
 class App extends Component {
   render() {
@@ -18,17 +18,11 @@ class App extends Component {
                   </h2>
                   <p className="logo-second-part">REWARDING PROGRAM</p>
                 </div>
-           
                 <nav className="app-buttons-container">
-                 
-                <ul className="app-nav-list">
-                    <li >
-                      <Link className="app-link app-link-blue" to="/customers">Customers</Link>
-                    </li>
-                    <li >
-                      <Link className="app-link app-link-red" to="/transactions">Transactions</Link>
-                    </li>
-                  </ul>
+                  <Button size="sm">Customers</Button>
+                  <Button size="sm" variant="danger">
+                    Transactions
+                  </Button>
                 </nav>
               </header>
               <section className="app-body">
@@ -44,10 +38,10 @@ class App extends Component {
             </div>
           </Route>
           <Route exact path="/customers">
-            <Customers />
+            {/* <Users /> */}
           </Route>
           <Route exact path="/transactions">
-            <Transactions />
+            {/* <Home /> */}
           </Route>
         </Switch>
       </Router>
