@@ -196,6 +196,27 @@ const localData = {
             date: "08-23-2020",
             usd: 51
         },
+        {
+            id: "trsc-30",
+            customerId: "cstmr-6",
+            customerName: "Nabilah Buckner",
+            date: "02-16-2019",
+            usd: 80
+        },
+        {
+            id: "trsc-31",
+            customerId: "cstmr-6",
+            customerName: "Nabilah Buckner",
+            date: "02-28-2019",
+            usd: 124
+        },
+        {
+            id: "trsc-32",
+            customerId: "cstmr-6",
+            customerName: "Nabilah Buckner",
+            date: "05-15-2019",
+            usd: 2500
+        },
     ],
     customers: [
         {
