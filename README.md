@@ -11,7 +11,7 @@ Rewards program to customers, awarding points based on each recorded purchase.
 
 <br>
 
-###### Screenshot 3: *Customer Detail*
+###### Screenshot 3: *Customer Details*
 <kbd><img width="1278" alt="Screen Shot 2020-10-01 at 7 11 42 PM" src="https://user-images.githubusercontent.com/45321668/94872478-af33cb00-041a-11eb-961b-3097636080f1.png">
 
 <br>
