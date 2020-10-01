@@ -1,8 +1,9 @@
-import Button from "react-bootstrap/Button";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import Customers from "../Customers/Customers";
+import Transactions from "../Transactions/Transactions";
 import React, { Component } from "react";
+import localData from "../Utilities/data";
 
 class App extends Component {
   render() {
@@ -19,29 +20,37 @@ class App extends Component {
                   <p className="logo-second-part">REWARDING PROGRAM</p>
                 </div>
                 <nav className="app-buttons-container">
-                  <Button size="sm">Customers</Button>
-                  <Button size="sm" variant="danger">
-                    Transactions
-                  </Button>
+                  <ul className="app-nav-list">
+                    <li>
+                      <Link to="/customers">Customers</Link>
+                    </li>
+                    <li>
+                      <Link to="/transactions">Transactions</Link>
+                    </li>
+                  </ul>
                 </nav>
               </header>
               <section className="app-body">
                 <article className="app-body_total-cont">
-                  <p className="app-body_total-num">5</p>
+                  <p className="app-body_total-num">
+                    {localData.customers.length}
+                  </p>
                   <p className="app-body_total-label">TOTAL CUSTOMERS</p>
                 </article>
                 <article className="app-body_total-cont">
-                  <p className="app-body_total-num">35</p>
+                  <p className="app-body_total-num">
+                    {localData.transactions.length}
+                  </p>
                   <p className="app-body_total-label">TOTAL TRANSACTIONS</p>
                 </article>
               </section>
             </div>
           </Route>
           <Route exact path="/customers">
-            {/* <Users /> */}
+            <Customers />
           </Route>
           <Route exact path="/transactions">
-            {/* <Home /> */}
+            <Transactions />
           </Route>
         </Switch>
       </Router>

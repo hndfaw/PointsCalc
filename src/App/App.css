@@ -81,27 +81,3 @@
   border-radius: 0.2rem;
   color: #fff;
 }
-
-.app-link-blue {
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.app-link-blue:hover {
-  text-decoration: none;
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
-}
-
-.app-link-red {
-  background-color: #dc3545;
-  border-color: #dc3545;
-}
-
-.app-link-red:hover {
-  text-decoration: none;
-  color: #fff;
-  background-color: #c82333;
-  border-color: #bd2130;
-}
