@@ -162,7 +162,7 @@ class Customer extends Component {
         <div className="customer-table-title-container">
           <h4 className="customer-table-title">Monthly Points</h4>
           {showTransactionsNote && (
-          <Alert variant="danger" >
+          <Alert variant="warning" >
             No transactions found for the selected year.{" "}
           </Alert>
         )}

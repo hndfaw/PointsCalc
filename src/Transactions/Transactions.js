@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Transactions.css";
-import { Table, Alert, Button } from "react-bootstrap";
+import { Table, Alert, Button, Pagination } from "react-bootstrap";
 import localData from "../Utilities/data";
 import { Link } from "react-router-dom";
 import { formatCurrency, formatDate } from "../Utilities/formatData";
@@ -8,28 +8,66 @@ import { formatCurrency, formatDate } from "../Utilities/formatData";
 class Transactions extends Component {
   state = {
     totalUSD: 0,
+    currentTransactions: [],
+    activePage: 1,
+    startingIndex: 0,
+    itemsPerPage: 10,
   };
 
   componentDidMount() {
-    this.calculateTotalUSD();
+    this.getTransactions(1);
   }
 
-  calculateTotalUSD = () => {
+  getTransactions = (number) => {
     const { transactions } = localData;
-    let totalUSD = transactions.reduce((acc, cur) => {
+    const { itemsPerPage } = this.state;
+    const startingIndex = number === 1 ? 0 : (number - 1) * itemsPerPage;
+    const currentTransactions = transactions.slice(
+      startingIndex,
+      startingIndex + itemsPerPage
+    );
+
+    let totalUSD = currentTransactions.reduce((acc, cur) => {
       acc += cur.usd;
       return acc;
     }, 0);
-    this.setState({ totalUSD });
+    this.setState({ currentTransactions, startingIndex, totalUSD });
+  };
+
+  handlePagination = (number) => {
+    this.setState({ activePage: number });
+    this.getTransactions(number);
+  };
+
+  pagination = () => {
+    let { activePage, itemsPerPage } = this.state;
+    const { transactions } = localData;
+    let totalPages = Math.ceil(transactions.length / itemsPerPage);
+
+    let items = [];
+    for (let number = 1; number <= totalPages; number++) {
+      items.push(
+        <Pagination.Item
+          onClick={() => this.handlePagination(number)}
+          key={number}
+          active={number === activePage}
+        >
+          {number}
+        </Pagination.Item>
+      );
+    }
+
+    return <Pagination size="sm">{items}</Pagination>;
   };
 
   returnTransactions = () => {
-    const { transactions } = localData;
-    return transactions.map((transaction, i) => {
+    const { currentTransactions, startingIndex } = this.state;
+
+    return currentTransactions.map((transaction, i) => {
       const { id, date, usd, customerName, customerId } = transaction;
       return (
         <tr key={id}>
-          <td>{i + 1}</td>
+          <td>{startingIndex + i + 1}</td>
           <td>{formatDate(date)}</td>
           <td>{formatCurrency(usd)}</td>
           <td>
@@ -41,8 +79,8 @@ class Transactions extends Component {
   };
 
   render() {
-    const { transactions } = localData;
     const { totalUSD } = this.state;
+    const { transactions } = localData;
 
     return (
       <div className="transactions">
@@ -87,6 +125,7 @@ class Transactions extends Component {
           </thead>
           <tbody>{this.returnTransactions()}</tbody>
         </Table>
+        {this.pagination()}
         <Alert variant="light">Click on a customer's name for details.</Alert>
       </div>
     );
