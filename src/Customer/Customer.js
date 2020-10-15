@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import "./Customer.css";
 import localData from "../Utilities/data";
 import { Table, Form, Button, Alert } from "react-bootstrap";
-import { formatCurrency } from "../Utilities/formatData";
 import Moment from "react-moment";
 import "moment-timezone";
+import NumberFormat from "react-number-format";
 
 class Customer extends Component {
   state = {
@@ -116,8 +116,19 @@ class Customer extends Component {
       return (
         <tr key={id}>
           <td>{i + 1}</td>
-          <td><Moment format="MMM D, YYYY">{date}</Moment></td>
-          <td>{formatCurrency(usd)}</td>
+          <td>
+            <Moment format="MMM D, YYYY">{date}</Moment>
+          </td>
+          <td>
+            <NumberFormat
+              value={usd}
+              displayType={"text"}
+              fixedDecimalScale={true}
+              decimalScale={2}
+              thousandSeparator={true}
+              prefix={"$"}
+            />
+          </td>
           <td>{points}</td>
         </tr>
       );
@@ -164,10 +175,10 @@ class Customer extends Component {
         <div className="customer-table-title-container">
           <h4 className="customer-table-title">Monthly Points</h4>
           {showTransactionsNote && (
-          <Alert variant="warning" >
-            No transactions found for the selected year.{" "}
-          </Alert>
-        )}
+            <Alert variant="warning">
+              No transactions found for the selected year.{" "}
+            </Alert>
+          )}
           <Form>
             <Form.Group controlId="exampleForm.SelectCustomSizeSm">
               <Form.Label>Year</Form.Label>
@@ -207,7 +218,6 @@ class Customer extends Component {
           </thead>
           <tbody>{this.returnTransWithPoints()}</tbody>
         </Table>
-        
       </div>
     );
   }

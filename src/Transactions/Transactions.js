@@ -3,9 +3,9 @@ import "./Transactions.css";
 import { Table, Alert, Button, Pagination } from "react-bootstrap";
 import localData from "../Utilities/data";
 import { Link } from "react-router-dom";
-import { formatCurrency } from "../Utilities/formatData";
 import Moment from "react-moment";
 import "moment-timezone";
+import NumberFormat from "react-number-format";
 
 class Transactions extends Component {
   state = {
@@ -74,7 +74,14 @@ class Transactions extends Component {
             {" "}
             <Moment format="MMM D, YYYY">{date}</Moment>
           </td>
-          <td>{formatCurrency(usd)}</td>
+          <td> <NumberFormat
+              value={usd}
+              displayType={"text"}
+              fixedDecimalScale={true}
+              decimalScale={2}
+              thousandSeparator={true}
+              prefix={"$"}
+            /></td>
           <td>
             <Link to={`/customer/${customerId}`}>{customerName}</Link>
           </td>
@@ -111,7 +118,14 @@ class Transactions extends Component {
             </div>
             <div className="transactions-header_block_widget">
               <p className="transactions-header_block_number">
-                {formatCurrency(totalUSD)}
+                <NumberFormat
+                  value={totalUSD}
+                  displayType={"text"}
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  thousandSeparator={true}
+                  prefix={"$"}
+                />
               </p>
               <p className="transactions-header_block_widget-label">
                 Total USD
