@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import "./Customer.css";
 import localData from "../Utilities/data";
 import { Table, Form, Button, Alert } from "react-bootstrap";
-import { formatCurrency, formatDate } from "../Utilities/formatData";
+import { formatCurrency } from "../Utilities/formatData";
+import Moment from "react-moment";
+import "moment-timezone";
 
 class Customer extends Component {
   state = {
@@ -114,7 +116,7 @@ class Customer extends Component {
       return (
         <tr key={id}>
           <td>{i + 1}</td>
-          <td>{formatDate(date)}</td>
+          <td><Moment format="MMM D, YYYY">{date}</Moment></td>
           <td>{formatCurrency(usd)}</td>
           <td>{points}</td>
         </tr>

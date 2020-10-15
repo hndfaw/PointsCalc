@@ -7,7 +7,9 @@ import React, { Component } from "react";
 import localData from "../Utilities/data";
 
 class App extends Component {
+  
   render() {
+    const dateToFormat = new Date();
     return (
       <Router>
         <Switch>

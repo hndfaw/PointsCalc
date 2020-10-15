@@ -3,7 +3,9 @@ import "./Transactions.css";
 import { Table, Alert, Button, Pagination } from "react-bootstrap";
 import localData from "../Utilities/data";
 import { Link } from "react-router-dom";
-import { formatCurrency, formatDate } from "../Utilities/formatData";
+import { formatCurrency } from "../Utilities/formatData";
+import Moment from "react-moment";
+import "moment-timezone";
 
 class Transactions extends Component {
   state = {
@@ -68,7 +70,10 @@ class Transactions extends Component {
       return (
         <tr key={id}>
           <td>{startingIndex + i + 1}</td>
-          <td>{formatDate(date)}</td>
+          <td>
+            {" "}
+            <Moment format="MMM D, YYYY">{date}</Moment>
+          </td>
           <td>{formatCurrency(usd)}</td>
           <td>
             <Link to={`/customer/${customerId}`}>{customerName}</Link>
